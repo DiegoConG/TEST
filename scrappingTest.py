@@ -22,15 +22,11 @@ async def extractData(chrome_path, url):
              #FormatData
             cards = await tasksTable.querySelectorAllEval('.list-card-title', r'(elements) => elements.map(el => el.textContent.replace(/^N\.º \d+/, "").trim())')
 
-            #for task in cards:
-            #    print(task)
-
             uploadData(cards)
 
     finally:
         await browser.close()
-
-
+        
 
 def uploadData(tasks):
     for task in tasks[:5]:
